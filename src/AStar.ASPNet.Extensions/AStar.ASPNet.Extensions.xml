@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AStar.ASPNet.Extensions</name>
+    </assembly>
+    <members>
+        <member name="T:AStar.ASPNet.Extensions.GlobalExceptionMiddleware">
+            <summary>
+            The <see ref="GlobalExceptionMiddleware"></see> class contains the code to process any unhandled exceptions in a consistent, cross-solution, approach.
+            </summary>
+            <param name="next">
+            An instance of <see ref="RequestDelegate"></see> that contains the next delegate in the ASP.Net pipeline.
+            </param>
+        </member>
+        <member name="M:AStar.ASPNet.Extensions.GlobalExceptionMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            The <see ref="GlobalExceptionMiddleware"></see> class contains the code to process any unhandled exceptions in a consistent, cross-solution, approach.
+            </summary>
+            <param name="next">
+            An instance of <see ref="RequestDelegate"></see> that contains the next delegate in the ASP.Net pipeline.
+            </param>
+        </member>
+        <member name="M:AStar.ASPNet.Extensions.GlobalExceptionMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            This method will handle any unhandled exception and return a standardised message.
+            </summary>
+            <param name="context">
+            An instance of <see href="HttpContext"></see> containing the HTTP Context for the current request.
+            </param>
+            <returns>
+            An awaitable task.
+            </returns>
+        </member>
+    </members>
+</doc>

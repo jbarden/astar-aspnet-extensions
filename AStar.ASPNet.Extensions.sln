@@ -5,33 +5,18 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F79E6630-C22A-4847-861B-40C8FE135FF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AStar.ASPNet.Extensions", "src\AStar.ASPNet.Extensions\AStar.ASPNet.Extensions.csproj", "{CA3A53FD-A9B4-4C2C-AFD7-586DBC249AF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AStar.ASPNet.Extensions", "src\AStar.ASPNet.Extensions\AStar.ASPNet.Extensions.csproj", "{CA3A53FD-A9B4-4C2C-AFD7-586DBC249AF3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6FE2E509-A6DB-4C4C-9A08-14EB649A2268}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unit", "unit", "{A5D8364D-B4F1-4AE2-8AD3-19B631BA6AC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AStar.ASPNet.Extensions.Unit.Tests", "tests\unit\AStar.ASPNet.Extensions.Unit.Tests\AStar.ASPNet.Extensions.Unit.Tests.csproj", "{16128C43-E839-4113-BAD8-6F1088A8D593}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "integration", "integration", "{D46DB75E-CB55-4584-8700-D75CEEE973D9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AStar.ASPNet.Extensions.Integration.Tests", "tests\integration\AStar.ASPNet.Extensions.Integration.Tests\AStar.ASPNet.Extensions.Integration.Tests.csproj", "{0F743342-5467-4D6C-9DE2-FF5875DA2692}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "acceptance", "acceptance", "{DBB47316-E82B-4714-A75E-EE93310E5E50}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AStar.ASPNet.Extensions.Acceptance.Tests", "tests\acceptance\AStar.ASPNet.Extensions.Acceptance.Tests\AStar.ASPNet.Extensions.Acceptance.Tests.csproj", "{638E0B2F-8FE7-41F3-9CF5-54FA394E981F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "architecture", "architecture", "{FD2B5117-FFFE-494C-B8B8-B142E5A6218E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AStar.ASPNet.Extensions.Architecture.Tests", "tests\architecture\AStar.ASPNet.Extensions.Architecture.Tests\AStar.ASPNet.Extensions.Architecture.Tests.csproj", "{3B3C0296-DE83-493B-B35B-5560EDC4FE94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AStar.ASPNet.Extensions.Unit.Tests", "tests\unit\AStar.ASPNet.Extensions.Unit.Tests\AStar.ASPNet.Extensions.Unit.Tests.csproj", "{16128C43-E839-4113-BAD8-6F1088A8D593}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CA3A53FD-A9B4-4C2C-AFD7-586DBC249AF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -42,28 +27,16 @@ Global
 		{16128C43-E839-4113-BAD8-6F1088A8D593}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16128C43-E839-4113-BAD8-6F1088A8D593}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16128C43-E839-4113-BAD8-6F1088A8D593}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0F743342-5467-4D6C-9DE2-FF5875DA2692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0F743342-5467-4D6C-9DE2-FF5875DA2692}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0F743342-5467-4D6C-9DE2-FF5875DA2692}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0F743342-5467-4D6C-9DE2-FF5875DA2692}.Release|Any CPU.Build.0 = Release|Any CPU
-		{638E0B2F-8FE7-41F3-9CF5-54FA394E981F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{638E0B2F-8FE7-41F3-9CF5-54FA394E981F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{638E0B2F-8FE7-41F3-9CF5-54FA394E981F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{638E0B2F-8FE7-41F3-9CF5-54FA394E981F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B3C0296-DE83-493B-B35B-5560EDC4FE94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B3C0296-DE83-493B-B35B-5560EDC4FE94}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B3C0296-DE83-493B-B35B-5560EDC4FE94}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B3C0296-DE83-493B-B35B-5560EDC4FE94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CA3A53FD-A9B4-4C2C-AFD7-586DBC249AF3} = {F79E6630-C22A-4847-861B-40C8FE135FF3}
 		{A5D8364D-B4F1-4AE2-8AD3-19B631BA6AC2} = {6FE2E509-A6DB-4C4C-9A08-14EB649A2268}
 		{16128C43-E839-4113-BAD8-6F1088A8D593} = {A5D8364D-B4F1-4AE2-8AD3-19B631BA6AC2}
-		{D46DB75E-CB55-4584-8700-D75CEEE973D9} = {6FE2E509-A6DB-4C4C-9A08-14EB649A2268}
-		{0F743342-5467-4D6C-9DE2-FF5875DA2692} = {D46DB75E-CB55-4584-8700-D75CEEE973D9}
-		{DBB47316-E82B-4714-A75E-EE93310E5E50} = {6FE2E509-A6DB-4C4C-9A08-14EB649A2268}
-		{638E0B2F-8FE7-41F3-9CF5-54FA394E981F} = {DBB47316-E82B-4714-A75E-EE93310E5E50}
-		{FD2B5117-FFFE-494C-B8B8-B142E5A6218E} = {6FE2E509-A6DB-4C4C-9A08-14EB649A2268}
-		{3B3C0296-DE83-493B-B35B-5560EDC4FE94} = {FD2B5117-FFFE-494C-B8B8-B142E5A6218E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3223BCFE-4722-4C80-BAAB-E706F9E187F2}
 	EndGlobalSection
 EndGlobal
