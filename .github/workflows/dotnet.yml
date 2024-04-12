@@ -64,7 +64,7 @@ jobs:
         path: "**/*.*"
 
     - name: Pack NuGet package
-      run: dotnet pack .\AStar.ASPNet.Extensions\AStar.ASPNet.Extensions.csproj
+      run: dotnet pack .\src\AStar.ASPNet.Extensions\AStar.ASPNet.Extensions.csproj
 
     - name: Push to NuGet
       run: dotnet nuget push "**\AStar.ASPNet.Extensions.*.nupkg" --api-key ${{secrets.nuget_api_key}} --skip-duplicate --source https://api.nuget.org/v3/index.json
