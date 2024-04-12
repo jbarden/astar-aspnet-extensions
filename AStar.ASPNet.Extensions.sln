@@ -18,6 +18,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{1D842181-7C74-42BB-8ED4-FEB2C9DCEC36}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{A3DEA4AA-54D6-4E03-8365-75915A6C4DB9}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +50,7 @@ Global
 		{A5D8364D-B4F1-4AE2-8AD3-19B631BA6AC2} = {6FE2E509-A6DB-4C4C-9A08-14EB649A2268}
 		{16128C43-E839-4113-BAD8-6F1088A8D593} = {A5D8364D-B4F1-4AE2-8AD3-19B631BA6AC2}
 		{7FC1901A-1B4E-46B6-A640-D79245B5A6CF} = {F79E6630-C22A-4847-861B-40C8FE135FF3}
+		{A3DEA4AA-54D6-4E03-8365-75915A6C4DB9} = {1D842181-7C74-42BB-8ED4-FEB2C9DCEC36}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3223BCFE-4722-4C80-BAAB-E706F9E187F2}
