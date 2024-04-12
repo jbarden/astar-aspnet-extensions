@@ -4,31 +4,47 @@
         <name>AStar.ASPNet.Extensions</name>
     </assembly>
     <members>
-        <member name="T:AStar.ASPNet.Extensions.GlobalExceptionMiddleware">
+        <member name="T:AStar.ASPNet.Extensions.Handlers.GlobalExceptionHandler">
             <summary>
             The <see ref="GlobalExceptionMiddleware"></see> class contains the code to process any unhandled exceptions in a consistent, cross-solution, approach.
             </summary>
-            <param name="next">
-            An instance of <see ref="RequestDelegate"></see> that contains the next delegate in the ASP.Net pipeline.
+            <param name="logger">
+            An instance of <see href="ILogger"></see> used to log the error.
             </param>
         </member>
-        <member name="M:AStar.ASPNet.Extensions.GlobalExceptionMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+        <member name="M:AStar.ASPNet.Extensions.Handlers.GlobalExceptionHandler.#ctor(Microsoft.Extensions.Logging.ILogger{AStar.ASPNet.Extensions.Handlers.GlobalExceptionHandler})">
             <summary>
             The <see ref="GlobalExceptionMiddleware"></see> class contains the code to process any unhandled exceptions in a consistent, cross-solution, approach.
             </summary>
-            <param name="next">
-            An instance of <see ref="RequestDelegate"></see> that contains the next delegate in the ASP.Net pipeline.
+            <param name="logger">
+            An instance of <see href="ILogger"></see> used to log the error.
             </param>
         </member>
-        <member name="M:AStar.ASPNet.Extensions.GlobalExceptionMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+        <member name="M:AStar.ASPNet.Extensions.Handlers.GlobalExceptionHandler.TryHandleAsync(Microsoft.AspNetCore.Http.HttpContext,System.Exception,System.Threading.CancellationToken)">
             <summary>
-            This method will handle any unhandled exception and return a standardised message.
             </summary>
-            <param name="context">
-            An instance of <see href="HttpContext"></see> containing the HTTP Context for the current request.
+            <param name="httpContext">
+            </param>
+            <param name="exception">
+            </param>
+            <param name="cancellationToken">
             </param>
             <returns>
-            An awaitable task.
+            </returns>
+        </member>
+        <member name="T:AStar.ASPNet.Extensions.Handlers.GlobalExceptionHandlerExtensions">
+            <summary>
+            The <see href="GlobalExceptionHandlerExtensions"></see> class centralises the Global Exception handler consumption.
+            </summary>
+        </member>
+        <member name="M:AStar.ASPNet.Extensions.Handlers.GlobalExceptionHandlerExtensions.AddGlobalExceptionHandler(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method extends the <see href="IServiceCollection"></see> to allow for a fluent, simpler addition of the custom <see href="GlobalExceptionHandler"></see> middleware.
+            </summary>
+            <param name="services">
+            </param>
+            <returns>
+            The original <see href="IApplicationBuilder"></see> instance for further method chaining.
             </returns>
         </member>
     </members>

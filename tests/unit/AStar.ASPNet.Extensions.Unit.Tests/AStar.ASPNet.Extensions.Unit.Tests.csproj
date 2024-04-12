@@ -26,8 +26,4 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\src\AStar.ASPNet.Extensions\AStar.ASPNet.Extensions.csproj" />
-  </ItemGroup>
-
 </Project>
