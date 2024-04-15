@@ -14,6 +14,5 @@ public static class GlobalExceptionHandlerExtensions
     /// The original <see href="IApplicationBuilder"></see> instance for further method chaining.
     /// </returns>
     public static IServiceCollection AddGlobalExceptionHandler(this IServiceCollection services)
-
                                             => services.AddExceptionHandler<GlobalExceptionHandler>();
 }
