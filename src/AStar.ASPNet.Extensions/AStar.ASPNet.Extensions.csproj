@@ -28,7 +28,7 @@
 	</PropertyGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="dir &quot;bin\Debug\&quot;&#xD;&#xA;xcopy &quot;bin\Debug\*.*nupkg&quot; &quot;C:\Local-Nuget&quot; /Y" />
+		<Exec Command="call ..\..\postbuild.bat" />
 	</Target>
 
 	<ItemGroup>

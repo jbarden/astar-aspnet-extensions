@@ -56,12 +56,6 @@ jobs:
         dotnet build --configuration Release
         dotnet-coverage collect 'dotnet test --filter "FullyQualifiedName!~Acceptance.Tests"' -f xml -o 'coverage.xml'
         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-        
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v4.0.0
-      with:
-        name: "AStar.ASPNet.Extensions.1.1.0"
-        path: "**/*.*"
 
     - name: Pack NuGet package
       run: dotnet pack .\src\AStar.ASPNet.Extensions\AStar.ASPNet.Extensions.csproj
