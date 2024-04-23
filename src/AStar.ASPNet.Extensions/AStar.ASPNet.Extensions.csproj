@@ -7,7 +7,6 @@
 		<Nullable>enable</Nullable>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<DocumentationFile>$(MSBuildProjectName).xml</DocumentationFile>
-		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<IsPackable>true</IsPackable>
 	</PropertyGroup>
 
@@ -24,12 +23,15 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<IncludeSymbols>True</IncludeSymbols>
-		<Version>0.2.0</Version>
+		<Version>0.3.0</Version>
 	</PropertyGroup>
 
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="call ..\..\postbuild.bat" />
-	</Target>
+	<ItemGroup>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.5.0" />
+    	<PackageReference Include="AStar.Api.HealthChecks" Version="0.2.0" />
+    	<PackageReference Include="AStar.Logging.Extensions" Version="0.1.0" />
+	</ItemGroup>
 
 	<ItemGroup>
 	  <None Include="..\..\LICENSE">

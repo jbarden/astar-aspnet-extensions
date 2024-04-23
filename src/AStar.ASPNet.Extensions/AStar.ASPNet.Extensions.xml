@@ -32,20 +32,36 @@
             <returns>
             </returns>
         </member>
-        <member name="T:AStar.ASPNet.Extensions.Handlers.GlobalExceptionHandlerExtensions">
+        <member name="T:AStar.ASPNet.Extensions.PipelineExtensions.PipelineExtensions">
             <summary>
-            The <see href="GlobalExceptionHandlerExtensions"></see> class centralises the Global Exception handler consumption.
+            The <see cref="N:AStar.ASPNet.Extensions.ServiceCollectionExtensions"/> class contains the method(s) available to configure the pipeline in a consistent manner. 
             </summary>
         </member>
-        <member name="M:AStar.ASPNet.Extensions.Handlers.GlobalExceptionHandlerExtensions.AddGlobalExceptionHandler(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:AStar.ASPNet.Extensions.PipelineExtensions.PipelineExtensions.ConfigurePipeline(Microsoft.AspNetCore.Builder.WebApplication)">
             <summary>
-            This method extends the <see href="IServiceCollection"></see> to allow for a fluent, simpler addition of the custom <see href="GlobalExceptionHandler"></see> middleware.
+            The <see cref="M:AStar.ASPNet.Extensions.PipelineExtensions.PipelineExtensions.ConfigurePipeline(Microsoft.AspNetCore.Builder.WebApplication)"/> will configure the pipeline to include Swagger, Authentication, Authorisation and basic live/ready health check endpoints
             </summary>
-            <param name="services">
-            </param>
-            <returns>
-            The original <see href="IApplicationBuilder"></see> instance for further method chaining.
-            </returns>
+            <param name="webApplication"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions">
+            <summary>
+            The <see cref="T:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions"/> class contains the method(s) available to configure the pipeline in a consistent manner. 
+            </summary>
+        </member>
+        <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigurePipeline(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigurePipeline(Microsoft.Extensions.DependencyInjection.IServiceCollection)"/> will do exactly what it says on the tin... 
+            </summary>
+            <param name="services">An instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> interface that will be configured with the current methods.</param>
+            <returns>The original <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to facilitate method chaining.   </returns>
+        </member>
+        <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.AddLogging(Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
+            <summary>
+            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.AddLogging(Microsoft.AspNetCore.Builder.WebApplicationBuilder)"/> will do exactly what it says on the tin... 
+            </summary>
+            <param name="builder">An instance of the <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder"/> class that will be configured with the current methods.</param>
+            <returns>The original <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder"/> to facilitate method chaining.   </returns>
         </member>
     </members>
 </doc>
