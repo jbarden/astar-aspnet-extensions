@@ -22,6 +22,7 @@ public static class ServiceCollectionExtensions
         _ = services.AddEndpointsApiExplorer();
         _ = services.AddSwaggerGen();
         _ = services.AddHealthChecks();
+        _ = services.AddSwaggerGenNewtonsoftSupport();
 
         return services;
     }
