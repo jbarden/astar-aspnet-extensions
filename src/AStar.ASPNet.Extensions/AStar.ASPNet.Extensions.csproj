@@ -11,27 +11,45 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Title>AStar ASPNet Extensions</Title>
 		<Authors>Jason Barden</Authors>
 		<Company>AStar Development</Company>
-		<Description>AStar ASPNet Extensions</Description>
 		<Copyright>AStar Development 2024</Copyright>
+		<Description>AStar ASPNet Extensions</Description>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<IncludeSymbols>True</IncludeSymbols>
+		<IsPackable>true</IsPackable>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageProjectUrl>https://github.com/jbarden/astar-aspnet-extensions</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<RepositoryUrl>https://github.com/jbarden/astar-aspnet-extensions.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<IncludeSymbols>True</IncludeSymbols>
-		<Version>0.3.1</Version>
+		<RepositoryUrl>https://github.com/jbarden/astar-aspnet-extensions.git</RepositoryUrl>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<TargetFramework>net8.0</TargetFramework>
+		<Title>AStar ASPNet Extensions</Title>
+		<Version>0.3.6</Version>
+		<contentFiles>
+			<files include="astar-logging-settings.json" buildAction="content" flatten="true" copyToOutput="true"/>
+		</contentFiles>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.5.0" />
     	<PackageReference Include="AStar.Api.HealthChecks" Version="0.2.0" />
-    	<PackageReference Include="AStar.Logging.Extensions" Version="0.1.0" />
 	</ItemGroup>
+		
+	<ItemGroup>
+		<PackageReference Include="AStar.Logging.Extensions" Version="0.1.1">
+			<GeneratePathProperty>true</GeneratePathProperty>
+		</PackageReference>
+	</ItemGroup>
+	
+	 <ItemGroup>
+    <Content Include="../contentFiles/astar-logging-settings.json" copyToOutput="true" flatten="true">
+      <IncludeInPackage>true</IncludeInPackage>
+    </Content>
+  </ItemGroup>
 
 	<ItemGroup>
 	  <None Include="..\..\LICENSE">
