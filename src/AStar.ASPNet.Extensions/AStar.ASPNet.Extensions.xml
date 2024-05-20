@@ -56,12 +56,15 @@
             <param name="services">An instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> interface that will be configured with the current methods.</param>
             <returns>The original <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to facilitate method chaining.   </returns>
         </member>
-        <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.AddLogging(Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
+        <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.AddLogging(Microsoft.AspNetCore.Builder.WebApplicationBuilder,System.String)">
             <summary>
-            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.AddLogging(Microsoft.AspNetCore.Builder.WebApplicationBuilder)"/> will do exactly what it says on the tin... 
+            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.AddLogging(Microsoft.AspNetCore.Builder.WebApplicationBuilder,System.String)"/> will do exactly what it says on the tin... 
             </summary>
             <param name="builder">An instance of the <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder"/> class that will be configured with the current methods.</param>
-            <returns>The original <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder"/> to facilitate method chaining.   </returns>
+            <param name="externalSettingsFile">
+            The name (including extension) of the file containing the Serilog Configuration settings.
+            </param>
+            <returns>The original <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder"/> to facilitate method chaining.</returns>
         </member>
     </members>
 </doc>
