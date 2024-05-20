@@ -3,7 +3,7 @@ using AStar.FilesApi.HealthChecks;
 namespace AStar.ASPNet.Extensions.PipelineExtensions;
 
 /// <summary>
-/// The <see cref="ServiceCollectionExtensions"/> class contains the method(s) available to configure the pipeline in a consistent manner. 
+/// The <see cref="ServiceCollectionExtensions"/> class contains the method(s) available to configure the pipeline in a consistent manner.
 /// </summary>
 public static class PipelineExtensions
 {
