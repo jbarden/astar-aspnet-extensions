@@ -27,7 +27,7 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<TargetFramework>net8.0</TargetFramework>
 		<Title>AStar ASPNet Extensions</Title>
-		<Version>0.4.1</Version>
+		<Version>0.4.2</Version>
 		<contentFiles>
 			<files include="astar-logging-settings.json" buildAction="content" flatten="true" copyToOutput="true" />
 		</contentFiles>
@@ -37,6 +37,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.6.1" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.6.1" />
     	<PackageReference Include="AStar.Api.HealthChecks" Version="0.2.1" />
 	</ItemGroup>
