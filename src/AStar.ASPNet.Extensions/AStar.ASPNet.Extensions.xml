@@ -46,33 +46,47 @@
         </member>
         <member name="T:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions">
             <summary>
-            The <see cref="T:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions" /> class contains the method(s) available to configure the pipeline in a consistent manner.
+            The <see cref="T:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions"/> class contains the method(s) available to configure the pipeline in a consistent manner.
             </summary>
         </member>
         <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
-            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)" /> will do exactly what it says on the tin...
+            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)"/> will do exactly what it says on the tin...this time around, this is for the UI.
             </summary>
-            <param name="services">
-            An instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> interface that will be configured with the current methods.
-            </param>
-            <returns>
-            The original <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> to facilitate method chaining.
-            </returns>
+            <param name="services">An instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> interface that will be configured with the the Global Exception Handler,
+            and the controllers (a UI isn't much use without them...).</param>
+            <returns>The original <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to facilitate method chaining.</returns>
+            <seealso href="ConfigureApi"></seealso>
+        </member>
+        <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection)"/> will do exactly what it says on the tin... just, this time, it is API-specific.
+            </summary>
+            <param name="services">An instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> interface that will be configured with the current methods.</param>
+            <returns>The original <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to facilitate method chaining.</returns>
+            <seealso href="Configure"></seealso>
         </member>
         <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.AddLogging(Microsoft.AspNetCore.Builder.WebApplicationBuilder,System.String)">
             <summary>
-            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.AddLogging(Microsoft.AspNetCore.Builder.WebApplicationBuilder,System.String)" /> will do exactly what it says on the tin...
+            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.AddLogging(Microsoft.AspNetCore.Builder.WebApplicationBuilder,System.String)"/> will do exactly what it says on the tin...
             </summary>
-            <param name="builder">
-            An instance of the <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder" /> class that will be configured with the current methods.
-            </param>
+            <param name="builder">An instance of the <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder"/> class that will be configured with the current methods.</param>
             <param name="externalSettingsFile">
             The name (including extension) of the file containing the Serilog Configuration settings.
             </param>
-            <returns>
-            The original <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder" /> to facilitate method chaining.
-            </returns>
+            <returns>The original <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder"/> to facilitate method chaining.</returns>
+        </member>
+        <member name="T:AStar.ASPNet.Extensions.WebApplicationBuilderExtensions.WebApplicationBuilderExtensions">
+            <summary>
+            The <see href=""></see> class containing applicable extensions for the <see href="WebApplicationBuilder"></see> class.
+            </summary>
+        </member>
+        <member name="M:AStar.ASPNet.Extensions.WebApplicationBuilderExtensions.WebApplicationBuilderExtensions.DisableServerHeader(Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
+            <summary>
+            This method will, unsurprisingly, disable the "Server" Header for all responses from the Kestrel Server.
+            </summary>
+            <param name="builder">The instance of <see href="WebApplicationBuilder"></see> to configure.</param>
+            <returns>The original instance of the <see href="WebApplicationBuilder"></see> to facilitate method chaining (AKA fluent configuration).</returns>
         </member>
     </members>
 </doc>
