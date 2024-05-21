@@ -12,13 +12,13 @@ namespace AStar.ASPNet.Extensions.ServiceCollectionExtensions;
 public static class ServiceCollectionExtensions
 {
     /// <summary>
-    /// The <see cref="Configure"/> will do exactly what it says on the tin...this time around, this is for the UI.
+    /// The <see cref="ConfigureUi"/> will do exactly what it says on the tin...this time around, this is for the UI.
     /// </summary>
     /// <param name="services">An instance of the <see cref="IServiceCollection"/> interface that will be configured with the the Global Exception Handler,
     /// and the controllers (a UI isn't much use without them...).</param>
     /// <returns>The original <see cref="IServiceCollection"/> to facilitate method chaining.</returns>
     /// <seealso href="ConfigureApi"></seealso>
-    public static IServiceCollection Configure(this IServiceCollection services)
+    public static IServiceCollection ConfigureUi(this IServiceCollection services)
     {
         _ = services
                 .AddExceptionHandler<GlobalExceptionHandler>()
@@ -32,7 +32,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services">An instance of the <see cref="IServiceCollection"/> interface that will be configured with the current methods.</param>
     /// <returns>The original <see cref="IServiceCollection"/> to facilitate method chaining.</returns>
-    /// <seealso href="Configure"></seealso>
+    /// <seealso href="ConfigureUi"></seealso>
     public static IServiceCollection ConfigureApi(this IServiceCollection services)
     {
         _ = services.AddExceptionHandler<GlobalExceptionHandler>();
