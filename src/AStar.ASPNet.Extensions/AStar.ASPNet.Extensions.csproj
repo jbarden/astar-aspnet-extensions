@@ -43,7 +43,7 @@
 	</ItemGroup>
 		
 	<ItemGroup>
-		<PackageReference Include="AStar.Logging.Extensions" Version="0.2.1">
+		<PackageReference Include="AStar.Logging.Extensions" Version="0.3.0">
 			<GeneratePathProperty>true</GeneratePathProperty>
 		</PackageReference>
 	</ItemGroup>
