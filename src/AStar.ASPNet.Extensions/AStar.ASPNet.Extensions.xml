@@ -46,46 +46,68 @@
         </member>
         <member name="T:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions">
             <summary>
-            The <see cref="T:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions"/> class contains the method(s) available to configure the pipeline in a consistent manner.
+            The <see cref="T:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions" /> class contains the method(s) available to configure the pipeline in a consistent manner.
             </summary>
         </member>
         <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureUi(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
-            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureUi(Microsoft.Extensions.DependencyInjection.IServiceCollection)"/> will do exactly what it says on the tin...this time around, this is for the UI.
+            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureUi(Microsoft.Extensions.DependencyInjection.IServiceCollection)" /> will do exactly what it says on the tin...this time around, this is for the UI.
             </summary>
-            <param name="services">An instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> interface that will be configured with the the Global Exception Handler,
-            and the controllers (a UI isn't much use without them...).</param>
-            <returns>The original <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to facilitate method chaining.</returns>
-            <seealso href="ConfigureApi"></seealso>
+            <param name="services">
+            An instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> interface that will be configured with the the Global Exception Handler, and the controllers (a UI isn't much use without them...).
+            </param>
+            <returns>
+            The original <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> to facilitate method chaining.
+            </returns>
+            <seealso href="ConfigureApi">
+            </seealso>
         </member>
         <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
-            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection)"/> will do exactly what it says on the tin... just, this time, it is API-specific.
+            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection)" /> will do exactly what it says on the tin... just, this time, it is API-specific.
             </summary>
-            <param name="services">An instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> interface that will be configured with the current methods.</param>
-            <returns>The original <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to facilitate method chaining.</returns>
-            <seealso href="ConfigureUi"></seealso>
-            <seealso href="ConfigureApi(IServiceCollection, OpenApiInfo)"></seealso>
+            <param name="services">
+            An instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> interface that will be configured with the current methods.
+            </param>
+            <returns>
+            The original <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> to facilitate method chaining.
+            </returns>
+            <seealso href="ConfigureUi">
+            </seealso>
+            <seealso href="ConfigureApi(IServiceCollection, OpenApiInfo)">
+            </seealso>
         </member>
         <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.OpenApi.Models.OpenApiInfo)">
             <summary>
-            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.OpenApi.Models.OpenApiInfo)"/> will do exactly what it says on the tin... just, this time, it is API-specific.
+            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.OpenApi.Models.OpenApiInfo)" /> will do exactly what it says on the tin... just, this time, it is API-specific.
             </summary>
-            <param name="services">An instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> interface that will be configured with the current methods.</param>
-            <param name="openApiInfo">An instance of <see cref="T:Microsoft.OpenApi.Models.OpenApiInfo"></see> that will be used to configure the SwaggerUI.</param>
-            <returns>The original <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to facilitate method chaining.</returns>
-            <seealso href="ConfigureUi"></seealso>
-            <seealso href="ConfigureApi(IServiceCollection)"></seealso>
+            <param name="services">
+            An instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> interface that will be configured with the current methods.
+            </param>
+            <param name="openApiInfo">
+            An instance of <see cref="T:Microsoft.OpenApi.Models.OpenApiInfo"></see> that will be used to configure the SwaggerUI.
+            </param>
+            <returns>
+            The original <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> to facilitate method chaining.
+            </returns>
+            <seealso href="ConfigureUi">
+            </seealso>
+            <seealso href="ConfigureApi(IServiceCollection)">
+            </seealso>
         </member>
         <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.AddLogging(Microsoft.AspNetCore.Builder.WebApplicationBuilder,System.String)">
             <summary>
-            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.AddLogging(Microsoft.AspNetCore.Builder.WebApplicationBuilder,System.String)"/> will do exactly what it says on the tin...
+            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.AddLogging(Microsoft.AspNetCore.Builder.WebApplicationBuilder,System.String)" /> will do exactly what it says on the tin...
             </summary>
-            <param name="builder">An instance of the <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder"/> class that will be configured with the current methods.</param>
+            <param name="builder">
+            An instance of the <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder" /> class that will be configured with the current methods.
+            </param>
             <param name="externalSettingsFile">
             The name (including extension) of the file containing the Serilog Configuration settings.
             </param>
-            <returns>The original <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder"/> to facilitate method chaining.</returns>
+            <returns>
+            The original <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder" /> to facilitate method chaining.
+            </returns>
         </member>
         <member name="T:AStar.ASPNet.Extensions.WebApplicationBuilderExtensions.WebApplicationBuilderExtensions">
             <summary>
