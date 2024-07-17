@@ -37,11 +37,13 @@
             The <see cref="N:AStar.ASPNet.Extensions.ServiceCollectionExtensions"/> class contains the method(s) available to configure the pipeline in a consistent manner.
             </summary>
         </member>
-        <member name="M:AStar.ASPNet.Extensions.PipelineExtensions.PipelineExtensions.ConfigurePipeline(Microsoft.AspNetCore.Builder.WebApplication)">
+        <member name="M:AStar.ASPNet.Extensions.PipelineExtensions.PipelineExtensions.ConfigurePipeline(Microsoft.AspNetCore.Builder.WebApplication,System.Boolean)">
             <summary>
-            The <see cref="M:AStar.ASPNet.Extensions.PipelineExtensions.PipelineExtensions.ConfigurePipeline(Microsoft.AspNetCore.Builder.WebApplication)"/> will configure the pipeline to include Swagger, Authentication, Authorisation and basic live/ready health check endpoints
+            The <see cref="M:AStar.ASPNet.Extensions.PipelineExtensions.PipelineExtensions.ConfigurePipeline(Microsoft.AspNetCore.Builder.WebApplication,System.Boolean)"/> will configure the pipeline to include Swagger, Authentication, Authorisation and basic live/ready health check endpoints
             </summary>
-            <param name="webApplication"></param>
+            <param name="webApplication">The instance of the <see cref="T:Microsoft.AspNetCore.Builder.WebApplication"/> to configure.</param>
+            <param name="registerSwagger">The registerSwagger parameter will, as you can reasonably expect, add the relevant UseSwagger commands. The default is <c>true</c>.
+            Set this parameter to false if you are using Fast Endpoints (or any other package that configures swagger separately).</param>
             <returns></returns>
         </member>
         <member name="T:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions">
@@ -77,15 +79,18 @@
             <seealso href="ConfigureApi(IServiceCollection, OpenApiInfo)">
             </seealso>
         </member>
-        <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.OpenApi.Models.OpenApiInfo)">
+        <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.OpenApi.Models.OpenApiInfo,System.Boolean)">
             <summary>
-            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.OpenApi.Models.OpenApiInfo)" /> will do exactly what it says on the tin... just, this time, it is API-specific.
+            The <see cref="!:ConfigureApi(IServiceCollection, OpenApiInfo)" /> will do exactly what it says on the tin... just, this time, it is API-specific.
             </summary>
             <param name="services">
             An instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> interface that will be configured with the current methods.
             </param>
             <param name="openApiInfo">
             An instance of <see cref="T:Microsoft.OpenApi.Models.OpenApiInfo"></see> that will be used to configure the SwaggerUI.
+            </param>
+            <param name="addSwagger">
+            As you might expect, the addSwagger parameter will add Swagger using the supplied <see cref="T:Microsoft.OpenApi.Models.OpenApiInfo"/> instance.
             </param>
             <returns>
             The original <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> to facilitate method chaining.
