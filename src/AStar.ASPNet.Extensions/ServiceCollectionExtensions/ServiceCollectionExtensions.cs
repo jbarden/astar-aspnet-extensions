@@ -66,6 +66,7 @@ public static class ServiceCollectionExtensions
         //                                        validationModelOptions.VaryByAll = true;
         //                                    }
         //                                );
+        _ = services.AddAuthorization();
         _ = services.AddControllers(options =>
         {
             options.ReturnHttpNotAcceptable = true;
@@ -130,6 +131,9 @@ public static class ServiceCollectionExtensions
     /// <param name="openApiInfo">
     /// An instance of <see cref="OpenApiInfo"></see> that will be used to configure the SwaggerUI.
     /// </param>
+    /// <param name="addSwagger">
+    /// As you might expect, the addSwagger parameter will add Swagger using the supplied <see cref="OpenApiInfo"/> instance.
+    /// </param>
     /// <returns>
     /// The original <see cref="IServiceCollection" /> to facilitate method chaining.
     /// </returns>
@@ -137,14 +141,21 @@ public static class ServiceCollectionExtensions
     /// </seealso>
     /// <seealso href="ConfigureApi(IServiceCollection)">
     /// </seealso>
-    public static IServiceCollection ConfigureApi(this IServiceCollection services, OpenApiInfo openApiInfo)
-        => services
-                .ConfigureApi()
-                .AddSwaggerGen(c =>
-                {
-                    c.SwaggerDoc(openApiInfo.Version, openApiInfo);
-                    c.EnableAnnotations();
-                });
+    public static IServiceCollection ConfigureApi(this IServiceCollection services, OpenApiInfo openApiInfo, bool addSwagger)
+    {
+        _ = services.ConfigureApi();
+
+        if(addSwagger)
+        {
+            _ = services.AddSwaggerGen(c =>
+                            {
+                                c.SwaggerDoc(openApiInfo.Version, openApiInfo);
+                                c.EnableAnnotations();
+                            });
+        }
+
+        return services;
+    }
 
     /// <summary>
     /// The <see cref="AddLogging" /> will do exactly what it says on the tin...
