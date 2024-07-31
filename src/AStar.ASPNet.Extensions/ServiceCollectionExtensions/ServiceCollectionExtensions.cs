@@ -106,17 +106,7 @@ public static class ServiceCollectionExtensions
                             ContentTypes = { "application/problem+json" }
                         };
                     });
-        _ = services.Configure<JsonOptions>(options =>
-        {
-            options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-            options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-            options.JsonSerializerOptions.WriteIndented = false;
-            options.JsonSerializerOptions.Encoder = JavaScriptEncoder.Default;
-            options.JsonSerializerOptions.AllowTrailingCommas = true;
-            options.JsonSerializerOptions.MaxDepth = 10;
-            options.JsonSerializerOptions.NumberHandling = JsonNumberHandling.AllowReadingFromString;
-            options.JsonSerializerOptions.TypeInfoResolver = new DefaultJsonTypeInfoResolver();
-        });
+
         _ = services.AddEndpointsApiExplorer();
 
         _ = services.AddHealthChecks();
