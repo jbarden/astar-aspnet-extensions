@@ -1,5 +1,3 @@
-using AStar.Api.HealthChecks;
-
 namespace AStar.ASPNet.Extensions.PipelineExtensions;
 
 /// <summary>
@@ -10,18 +8,24 @@ public static class PipelineExtensions
     /// <summary>
     /// The <see cref="ConfigurePipeline"/> will configure the pipeline to include Swagger, Authentication, Authorisation and basic live/ready health check endpoints
     /// </summary>
-    /// <param name="webApplication"></param>
+    /// <param name="webApplication">The instance of the <see cref="WebApplication"/> to configure.</param>
+    /// <param name="registerSwagger">The registerSwagger parameter will, as you can reasonably expect, add the relevant UseSwagger commands. The default is <c>true</c>.
+    /// Set this parameter to false if you are using Fast Endpoints (or any other package that configures swagger separately).</param>
     /// <returns></returns>
-    public static WebApplication ConfigurePipeline(this WebApplication webApplication)
+    public static WebApplication ConfigurePipeline(this WebApplication webApplication, bool registerSwagger = true)
     {
-        _ = webApplication.UseSwagger()
-                          .UseSwaggerUI()
-                          .UseAuthentication();
-        //.UseAuthorization();
+        if(registerSwagger)
+        {
+            _ = webApplication.UseSwagger()
+                            .UseSwaggerUI();    
+        }
+        
+        _ = webApplication.UseAuthentication()
+                          .UseAuthorization();
         //.UseResponseCaching();
         //.UseHttpCacheHeaders();
 
-        _ = webApplication.ConfigureHealthCheckEndpoints();
+        _ = webApplication.MapHealthChecks("/health");
         _ = webApplication.UseExceptionHandler(opt => { });
         _ = webApplication.MapControllers();
 
