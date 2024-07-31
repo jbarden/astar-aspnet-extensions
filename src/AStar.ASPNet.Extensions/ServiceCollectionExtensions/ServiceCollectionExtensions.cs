@@ -2,6 +2,7 @@ using System.Runtime.Serialization;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using AStar.ASPNet.Extensions.Handlers;
 using AStar.Logging.Extensions;
 using Microsoft.AspNetCore.Mvc;
@@ -114,6 +115,7 @@ public static class ServiceCollectionExtensions
             options.JsonSerializerOptions.AllowTrailingCommas = true;
             options.JsonSerializerOptions.MaxDepth = 10;
             options.JsonSerializerOptions.NumberHandling = JsonNumberHandling.AllowReadingFromString;
+            options.JsonSerializerOptions.TypeInfoResolver = new DefaultJsonTypeInfoResolver();
         });
         _ = services.AddEndpointsApiExplorer();
 

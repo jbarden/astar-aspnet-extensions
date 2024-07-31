@@ -27,7 +27,8 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<TargetFramework>net8.0</TargetFramework>
 		<Title>AStar ASPNet Extensions</Title>
-		<Version>0.7.2</Version>
+		<Version>0.7.3</Version>
+		<PackageReleaseNotes>Add default TypeInfoResolver in attempt to fix bug</PackageReleaseNotes>
 		<contentFiles>
 			<files include="astar-logging-settings.json" buildAction="content" flatten="true" copyToOutput="true" />
 		</contentFiles>
