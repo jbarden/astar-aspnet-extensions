@@ -54,40 +54,8 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection ConfigureApi(this IServiceCollection services)
     {
         _ = services.AddExceptionHandler<GlobalExceptionHandler>();
-        //_ = services.AddResponseCaching();
-        //_ = services.AddHttpCacheHeaders(
-        //                                    (expirationModelOptions) =>
-        //                                    {
-        //                                        expirationModelOptions.MaxAge = 60;
-        //                                        expirationModelOptions.CacheLocation = Marvin.Cache.Headers.CacheLocation.Public;
-        //                                    },
-        //                                    (validationModelOptions) =>
-        //                                    {
-        //                                        validationModelOptions.MustRevalidate = true;
-        //                                        validationModelOptions.VaryByAll = true;
-        //                                    }
-        //                                );
         _ = services.AddAuthorization();
-        _ = services.AddControllers(options =>
-        {
-            options.ReturnHttpNotAcceptable = true;
-            options.OutputFormatters.Clear();
-            options.OutputFormatters.Add(new SystemTextJsonOutputFormatter(new JsonSerializerOptions(JsonSerializerDefaults.Web)));
-            options.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status406NotAcceptable));
-            options.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status500InternalServerError));
-            for(int i = 0; i < options.OutputFormatters.Count; i++)
-            {
-                Log.Information("Formatter: {Formatter}", options.OutputFormatters[i].GetType());
-                if(options.OutputFormatters[i].GetType() == typeof(StringOutputFormatter))
-                {
-                    options.OutputFormatters.RemoveAt(i);
-                }
-                else if(options.OutputFormatters[i].GetType() == typeof(SystemTextJsonOutputFormatter))
-                {
-                    _ = ((SystemTextJsonOutputFormatter)options.OutputFormatters[i]).SupportedMediaTypes.Remove("text/json");
-                }
-            }
-        })
+        _ = services.AddControllers(options => options.ReturnHttpNotAcceptable = true)
                     .ConfigureApiBehaviorOptions(setupAction => setupAction.InvalidModelStateResponseFactory = context =>
                     {
                         var problemDetailsFactory = context.HttpContext.RequestServices.GetRequiredService<ProblemDetailsFactory>();
@@ -115,7 +83,7 @@ public static class ServiceCollectionExtensions
     }
 
     /// <summary>
-    /// The <see cref="ConfigureApi(IServiceCollection, OpenApiInfo)" /> will do exactly what it says on the tin... just, this time, it is API-specific.
+    /// The <see cref="ConfigureApi(IServiceCollection, OpenApiInfo, bool)" /> will do exactly what it says on the tin... just, this time, it is API-specific.
     /// </summary>
     /// <param name="services">
     /// An instance of the <see cref="IServiceCollection" /> interface that will be configured with the current methods.

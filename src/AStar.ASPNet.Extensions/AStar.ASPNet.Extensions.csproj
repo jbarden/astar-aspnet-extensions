@@ -27,8 +27,8 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<TargetFramework>net8.0</TargetFramework>
 		<Title>AStar ASPNet Extensions</Title>
-		<Version>0.7.4</Version>
-		<PackageReleaseNotes>Remove JsonOptions to revert earlier changes and, hopefully, resolve the TypeInfoResolver bug</PackageReleaseNotes>
+		<Version>0.7.5</Version>
+		<PackageReleaseNotes>Remove the removal of the formatters and, hopefully, resolve the TypeInfoResolver bug</PackageReleaseNotes>
 		<contentFiles>
 			<files include="astar-logging-settings.json" buildAction="content" flatten="true" copyToOutput="true" />
 		</contentFiles>
