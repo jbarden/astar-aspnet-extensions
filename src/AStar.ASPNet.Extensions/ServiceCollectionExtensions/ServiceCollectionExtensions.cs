@@ -1,15 +1,10 @@
-using System.Runtime.Serialization;
-using System.Text.Encodings.Web;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Text.Json.Serialization.Metadata;
+﻿using Asp.Versioning;
 using AStar.ASPNet.Extensions.Handlers;
-using AStar.Logging.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
+using AStar.ASPNet.Extensions.Swagger;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-using Serilog;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace AStar.ASPNet.Extensions.ServiceCollectionExtensions;
 
@@ -32,17 +27,20 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection ConfigureUi(this IServiceCollection services)
     {
         _ = services
-                .AddExceptionHandler<GlobalExceptionHandler>()
+                .AddCommon()
                 .AddControllers();
 
         return services;
     }
 
     /// <summary>
-    /// The <see cref="ConfigureApi(IServiceCollection)" /> will do exactly what it says on the tin... just, this time, it is API-specific.
+    /// The <see cref="ConfigureApi(IServiceCollection, OpenApiInfo)" /> will do exactly what it says on the tin... just, this time, it is API-specific.
     /// </summary>
     /// <param name="services">
     /// An instance of the <see cref="IServiceCollection" /> interface that will be configured with the current methods.
+    /// </param>
+    /// <param name="openApiInfo">
+    /// The configured instance of <see cref="OpenApiInfo"/> to complete the Swagger configuration.
     /// </param>
     /// <returns>
     /// The original <see cref="IServiceCollection" /> to facilitate method chaining.
@@ -51,88 +49,37 @@ public static class ServiceCollectionExtensions
     /// </seealso>
     /// <seealso href="ConfigureApi(IServiceCollection, OpenApiInfo)">
     /// </seealso>
-    public static IServiceCollection ConfigureApi(this IServiceCollection services)
+    public static IServiceCollection ConfigureApi(this IServiceCollection services, OpenApiInfo openApiInfo)
     {
-        _ = services.AddExceptionHandler<GlobalExceptionHandler>();
-        _ = services.AddAuthorization();
-        _ = services.AddControllers(options => options.ReturnHttpNotAcceptable = true)
-                    .ConfigureApiBehaviorOptions(setupAction => setupAction.InvalidModelStateResponseFactory = context =>
-                    {
-                        var problemDetailsFactory = context.HttpContext.RequestServices.GetRequiredService<ProblemDetailsFactory>();
+        _ = services.AddCommon()
+                    .AddControllers(options => options.ReturnHttpNotAcceptable = true);
 
-                        var validationProblemDetails = problemDetailsFactory.CreateValidationProblemDetails(context.HttpContext, context.ModelState);
+        _ = services.AddProblemDetails();
+        _ = services.AddApiVersioning(options => options.ReportApiVersions = true)
+                    .AddMvc()
+                    .AddApiExplorer(options => options.GroupNameFormat = "'v'VVV");
 
-                        validationProblemDetails.Detail = "See the errors field for details.";
-                        validationProblemDetails.Instance = context.HttpContext.Request.Path;
+        _ = services.AddTransient(_ => openApiInfo);
+        _ = services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+        _ = services.AddSwaggerGen(
+            options =>
+            {
+                var fileName = typeof( Program ).Assembly.GetName().Name + ".xml";
+                var filePath = Path.Combine( AppContext.BaseDirectory, fileName );
 
-                        validationProblemDetails.Type = "https://courselibrary.com/modelvalidationproblem";
-                        validationProblemDetails.Status = StatusCodes.Status422UnprocessableEntity;
-                        validationProblemDetails.Title = "One or more validation errors occurred.";
+                options.IncludeXmlComments(filePath);
+            });
 
-                        return new UnprocessableEntityObjectResult(validationProblemDetails)
-                        {
-                            ContentTypes = { "application/problem+json" }
-                        };
-                    });
-
-        _ = services.AddEndpointsApiExplorer();
-
+        services.TryAddEnumerable(ServiceDescriptor.Singleton<IProblemDetailsWriter, ErrorObjectWriter>());
         _ = services.AddHealthChecks();
 
         return services;
     }
 
-    /// <summary>
-    /// The <see cref="ConfigureApi(IServiceCollection, OpenApiInfo, bool)" /> will do exactly what it says on the tin... just, this time, it is API-specific.
-    /// </summary>
-    /// <param name="services">
-    /// An instance of the <see cref="IServiceCollection" /> interface that will be configured with the current methods.
-    /// </param>
-    /// <param name="openApiInfo">
-    /// An instance of <see cref="OpenApiInfo"></see> that will be used to configure the SwaggerUI.
-    /// </param>
-    /// <param name="addSwagger">
-    /// As you might expect, the addSwagger parameter will add Swagger using the supplied <see cref="OpenApiInfo"/> instance.
-    /// </param>
-    /// <returns>
-    /// The original <see cref="IServiceCollection" /> to facilitate method chaining.
-    /// </returns>
-    /// <seealso href="ConfigureUi">
-    /// </seealso>
-    /// <seealso href="ConfigureApi(IServiceCollection)">
-    /// </seealso>
-    public static IServiceCollection ConfigureApi(this IServiceCollection services, OpenApiInfo openApiInfo, bool addSwagger)
+    private static IServiceCollection AddCommon(this IServiceCollection services)
     {
-        _ = services.ConfigureApi();
-
-        if(addSwagger)
-        {
-            _ = services.AddSwaggerGen(c =>
-                            {
-                                c.SwaggerDoc(openApiInfo.Version, openApiInfo);
-                                c.EnableAnnotations();
-                            });
-        }
+        _ = services.AddExceptionHandler<GlobalExceptionHandler>();
 
         return services;
-    }
-
-    /// <summary>
-    /// The <see cref="AddLogging" /> will do exactly what it says on the tin...
-    /// </summary>
-    /// <param name="builder">
-    /// An instance of the <see cref="WebApplicationBuilder" /> class that will be configured with the current methods.
-    /// </param>
-    /// <param name="externalSettingsFile">
-    /// The name (including extension) of the file containing the Serilog Configuration settings.
-    /// </param>
-    /// <returns>
-    /// The original <see cref="WebApplicationBuilder" /> to facilitate method chaining.
-    /// </returns>
-    public static WebApplicationBuilder AddLogging(this WebApplicationBuilder builder, string externalSettingsFile = "")
-    {
-        _ = builder.UseSerilogLogging(externalSettingsFile);
-
-        return builder;
     }
 }
