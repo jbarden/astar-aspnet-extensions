@@ -27,8 +27,8 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<TargetFramework>net8.0</TargetFramework>
 		<Title>AStar ASPNet Extensions</Title>
-		<Version>0.8.1</Version>
-		<PackageReleaseNotes>Add API Versioning to the mix.</PackageReleaseNotes>
+		<Version>0.8.2</Version>
+		<PackageReleaseNotes>Add API Versioning to the mix. Update NuGet packages.</PackageReleaseNotes>
 		<contentFiles>
 			<files include="astar-logging-settings.json" buildAction="content" flatten="true" copyToOutput="true" />
 		</contentFiles>
@@ -53,7 +53,7 @@
 	</ItemGroup>
 		
 	<ItemGroup>
-		<PackageReference Include="AStar.Logging.Extensions" Version="0.3.1">
+		<PackageReference Include="AStar.Logging.Extensions" Version="0.4.0">
 			<GeneratePathProperty>true</GeneratePathProperty>
 		</PackageReference>
 		<PackageReference Include="System.Text.Json" Version="8.0.5" />

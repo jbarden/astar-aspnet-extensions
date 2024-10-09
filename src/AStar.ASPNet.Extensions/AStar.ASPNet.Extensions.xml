@@ -4,6 +4,21 @@
         <name>AStar.ASPNet.Extensions</name>
     </assembly>
     <members>
+        <member name="T:AStar.ASPNet.Extensions.ApiConfiguration">
+            <summary>
+            The <see cref="T:AStar.ASPNet.Extensions.ApiConfiguration"/> class which is used to load the Api Configuration.
+            </summary>
+        </member>
+        <member name="F:AStar.ASPNet.Extensions.ApiConfiguration.ConfigurationSectionName">
+            <summary>
+            The static Configuration Section Name which controls where DI looks for the API Configuration.
+            </summary>
+        </member>
+        <member name="P:AStar.ASPNet.Extensions.ApiConfiguration.OpenApiInfo">
+            <summary>
+            The <see cref="P:AStar.ASPNet.Extensions.ApiConfiguration.OpenApiInfo"/> used to configure Swagger.
+            </summary>
+        </member>
         <member name="T:AStar.ASPNet.Extensions.Handlers.GlobalExceptionHandler">
             <summary>
             The <see ref="GlobalExceptionMiddleware"></see> class contains the code to process any unhandled exceptions in a consistent, cross-solution, approach.
@@ -22,14 +37,19 @@
         </member>
         <member name="M:AStar.ASPNet.Extensions.Handlers.GlobalExceptionHandler.TryHandleAsync(Microsoft.AspNetCore.Http.HttpContext,System.Exception,System.Threading.CancellationToken)">
             <summary>
+            The TryHandleAsync as defined by the <see cref="T:Microsoft.AspNetCore.Diagnostics.IExceptionHandler"/> interface.
             </summary>
             <param name="httpContext">
+            The <see cref="T:Microsoft.AspNetCore.Http.HttpContext"/> for the current request.
             </param>
             <param name="exception">
+            The unhandled exception.
             </param>
             <param name="cancellationToken">
+            The <see cref="T:System.Threading.CancellationToken"/> that the framework will pass to the method.
             </param>
             <returns>
+            An instance of <see cref="T:System.Threading.Tasks.ValueTask"/> of type <see cref="T:System.Boolean"/> as defined by the <see cref="T:Microsoft.AspNetCore.Diagnostics.IExceptionHandler"/> interface.
             </returns>
         </member>
         <member name="T:AStar.ASPNet.Extensions.PipelineExtensions.PipelineExtensions">
@@ -37,15 +57,12 @@
             The <see cref="N:AStar.ASPNet.Extensions.ServiceCollectionExtensions" /> class contains the method(s) available to configure the pipeline in a consistent manner.
             </summary>
         </member>
-        <member name="M:AStar.ASPNet.Extensions.PipelineExtensions.PipelineExtensions.ConfigurePipeline(Microsoft.AspNetCore.Builder.WebApplication,Microsoft.OpenApi.Models.OpenApiInfo)">
+        <member name="M:AStar.ASPNet.Extensions.PipelineExtensions.PipelineExtensions.ConfigurePipeline(Microsoft.AspNetCore.Builder.WebApplication)">
             <summary>
-            The <see cref="M:AStar.ASPNet.Extensions.PipelineExtensions.PipelineExtensions.ConfigurePipeline(Microsoft.AspNetCore.Builder.WebApplication,Microsoft.OpenApi.Models.OpenApiInfo)" /> will configure the pipeline to include Swagger, Authentication, Authorisation and basic live/ready health check endpoints
+            The <see cref="M:AStar.ASPNet.Extensions.PipelineExtensions.PipelineExtensions.ConfigurePipeline(Microsoft.AspNetCore.Builder.WebApplication)" /> will configure the pipeline to include Swagger, Authentication, Authorisation and basic live/ready health check endpoints
             </summary>
             <param name="webApplication">
             The instance of the <see cref="T:Microsoft.AspNetCore.Builder.WebApplication" /> to configure.
-            </param>
-            <param name="openApiInfo">
-            An instance of <see cref="T:Microsoft.OpenApi.Models.OpenApiInfo"></see> that will be used to configure the SwaggerUI.
             </param>
             <returns>
             The instance of the <see cref="T:Microsoft.AspNetCore.Builder.WebApplication" /> to facilitate chaining.
@@ -69,12 +86,15 @@
             <seealso href="ConfigureApi">
             </seealso>
         </member>
-        <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.OpenApi.Models.OpenApiInfo)">
             <summary>
-            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection)" /> will do exactly what it says on the tin... just, this time, it is API-specific.
+            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.OpenApi.Models.OpenApiInfo)" /> will do exactly what it says on the tin... just, this time, it is API-specific.
             </summary>
             <param name="services">
             An instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> interface that will be configured with the current methods.
+            </param>
+            <param name="openApiInfo">
+            The configured instance of <see cref="T:Microsoft.OpenApi.Models.OpenApiInfo"/> to complete the Swagger configuration.
             </param>
             <returns>
             The original <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> to facilitate method chaining.
@@ -84,48 +104,36 @@
             <seealso href="ConfigureApi(IServiceCollection, OpenApiInfo)">
             </seealso>
         </member>
-        <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureVersioning(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="T:AStar.ASPNet.Extensions.Swagger.ConfigureSwaggerOptions">
             <summary>
-            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureVersioning(Microsoft.Extensions.DependencyInjection.IServiceCollection)" /> method sets an opinionated set of defaults. This may change, but for now, it is what it is...
+            Configures the Swagger generation options.
             </summary>
-            <param name="services">
-            An instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> interface that will be configured with the current methods.
-            </param>
-            <returns>
-            The original <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> to facilitate method chaining.
-            </returns>
-        </member>
-        <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.OpenApi.Models.OpenApiInfo)">
-            <summary>
-            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.OpenApi.Models.OpenApiInfo)" /> will do exactly what it says on the tin... configure Swagger with the supplied information.
-            </summary>
-            <param name="services">
-            An instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> interface that will be configured with the current methods.
-            </param>
+            <remarks>This allows API versioning to define a Swagger document per API version after the
+            <see cref="T:Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider"/> service has been resolved from the service container.</remarks>
+            <remarks>
+            Initializes a new instance of the <see cref="T:AStar.ASPNet.Extensions.Swagger.ConfigureSwaggerOptions"/> class.
+            </remarks>
+            <param name="provider">The <see cref="T:Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider">provider</see> used to generate Swagger documents.</param>
             <param name="openApiInfo">
-            An instance of <see cref="T:Microsoft.OpenApi.Models.OpenApiInfo"></see> that will be used to configure the SwaggerUI.
+            The configured instance of <see cref="T:Microsoft.OpenApi.Models.OpenApiInfo"/> to complete the Swagger configuration.
             </param>
-            <returns>
-            The original <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> to facilitate method chaining.
-            </returns>
-            <seealso href="ConfigureUi">
-            </seealso>
-            <seealso href="ConfigureApi(IServiceCollection)">
-            </seealso>
         </member>
-        <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.AddLogging(Microsoft.AspNetCore.Builder.WebApplicationBuilder,System.String)">
+        <member name="M:AStar.ASPNet.Extensions.Swagger.ConfigureSwaggerOptions.#ctor(Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider,Microsoft.OpenApi.Models.OpenApiInfo)">
             <summary>
-            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.AddLogging(Microsoft.AspNetCore.Builder.WebApplicationBuilder,System.String)" /> will do exactly what it says on the tin...
+            Configures the Swagger generation options.
             </summary>
-            <param name="builder">
-            An instance of the <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder" /> class that will be configured with the current methods.
+            <remarks>This allows API versioning to define a Swagger document per API version after the
+            <see cref="T:Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider"/> service has been resolved from the service container.</remarks>
+            <remarks>
+            Initializes a new instance of the <see cref="T:AStar.ASPNet.Extensions.Swagger.ConfigureSwaggerOptions"/> class.
+            </remarks>
+            <param name="provider">The <see cref="T:Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider">provider</see> used to generate Swagger documents.</param>
+            <param name="openApiInfo">
+            The configured instance of <see cref="T:Microsoft.OpenApi.Models.OpenApiInfo"/> to complete the Swagger configuration.
             </param>
-            <param name="externalSettingsFile">
-            The name (including extension) of the file containing the Serilog Configuration settings.
-            </param>
-            <returns>
-            The original <see cref="T:Microsoft.AspNetCore.Builder.WebApplicationBuilder" /> to facilitate method chaining.
-            </returns>
+        </member>
+        <member name="M:AStar.ASPNet.Extensions.Swagger.ConfigureSwaggerOptions.Configure(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <inheritdoc />
         </member>
         <member name="T:AStar.ASPNet.Extensions.WebApplicationBuilderExtensions.WebApplicationBuilderExtensions">
             <summary>
