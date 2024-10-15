@@ -1,32 +1,41 @@
 namespace AStar.ASPNet.Extensions.PipelineExtensions;
 
 /// <summary>
-/// The <see cref="ServiceCollectionExtensions"/> class contains the method(s) available to configure the pipeline in a consistent manner.
+/// The <see cref="ServiceCollectionExtensions" /> class contains the method(s) available to configure the pipeline in a consistent manner.
 /// </summary>
 public static class PipelineExtensions
 {
     /// <summary>
-    /// The <see cref="ConfigurePipeline"/> will configure the pipeline to include Swagger, Authentication, Authorisation and basic live/ready health check endpoints
+    /// The <see cref="ConfigurePipeline" /> will configure the pipeline to include Swagger, Authentication, Authorisation and basic live/ready health check endpoints
     /// </summary>
-    /// <param name="webApplication">The instance of the <see cref="WebApplication"/> to configure.</param>
-    /// <param name="registerSwagger">The registerSwagger parameter will, as you can reasonably expect, add the relevant UseSwagger commands. The default is <c>true</c>.
-    /// Set this parameter to false if you are using Fast Endpoints (or any other package that configures swagger separately).</param>
-    /// <returns></returns>
-    public static WebApplication ConfigurePipeline(this WebApplication webApplication, bool registerSwagger = true)
+    /// <param name="webApplication">
+    /// The instance of the <see cref="WebApplication" /> to configure.
+    /// </param>
+    /// <returns>
+    /// The instance of the <see cref="WebApplication" /> to facilitate chaining.
+    /// </returns>
+    public static WebApplication ConfigurePipeline(this WebApplication webApplication)
     {
-        if(registerSwagger)
-        {
-            _ = webApplication.UseSwagger()
-                            .UseSwaggerUI();    
-        }
-        
+        _ = webApplication.UseExceptionHandler();
+        _ = webApplication.UseSwagger();
+        _ = webApplication.UseSwaggerUI(
+           options =>
+           {
+               var descriptions = webApplication.DescribeApiVersions();
+
+               // build a swagger endpoint for each discovered API version
+               foreach(var description in descriptions)
+               {
+                   var url = $"/swagger/{description.GroupName}/swagger.json";
+                   var name = description.GroupName.ToUpperInvariant();
+                   options.SwaggerEndpoint(url, name);
+               }
+           });
+
         _ = webApplication.UseAuthentication()
                           .UseAuthorization();
-        //.UseResponseCaching();
-        //.UseHttpCacheHeaders();
 
         _ = webApplication.MapHealthChecks("/health");
-        _ = webApplication.UseExceptionHandler(opt => { });
         _ = webApplication.MapControllers();
 
         return webApplication;

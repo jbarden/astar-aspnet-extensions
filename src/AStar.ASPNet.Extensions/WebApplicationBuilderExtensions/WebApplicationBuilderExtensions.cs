@@ -8,8 +8,12 @@ public static class WebApplicationBuilderExtensions
     /// <summary>
     /// This method will, unsurprisingly, disable the "Server" Header for all responses from the Kestrel Server.
     /// </summary>
-    /// <param name="builder">The instance of <see href="WebApplicationBuilder"></see> to configure.</param>
-    /// <returns>The original instance of the <see href="WebApplicationBuilder"></see> to facilitate method chaining (AKA fluent configuration).</returns>
+    /// <param name="builder">
+    /// The instance of <see href="WebApplicationBuilder"></see> to configure.
+    /// </param>
+    /// <returns>
+    /// The original instance of the <see href="WebApplicationBuilder"></see> to facilitate method chaining (AKA fluent configuration).
+    /// </returns>
     public static WebApplicationBuilder DisableServerHeader(this WebApplicationBuilder builder)
     {
         _ = builder.WebHost.UseKestrel(option => option.AddServerHeader = false);

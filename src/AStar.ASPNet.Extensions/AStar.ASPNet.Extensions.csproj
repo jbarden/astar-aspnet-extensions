@@ -27,8 +27,8 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<TargetFramework>net8.0</TargetFramework>
 		<Title>AStar ASPNet Extensions</Title>
-		<Version>0.7.5</Version>
-		<PackageReleaseNotes>Remove the removal of the formatters and, hopefully, resolve the TypeInfoResolver bug</PackageReleaseNotes>
+		<Version>0.8.3</Version>
+		<PackageReleaseNotes>Parse App name so correct XML documentation file is used to configure Swagger.</PackageReleaseNotes>
 		<contentFiles>
 			<files include="astar-logging-settings.json" buildAction="content" flatten="true" copyToOutput="true" />
 		</contentFiles>
@@ -36,17 +36,27 @@
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+
 	<ItemGroup>
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.6.2" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.6.2" />
+		<PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.9.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.9.0" />
     	<PackageReference Include="AStar.Api.HealthChecks" Version="0.3.0" />
 	</ItemGroup>
 		
 	<ItemGroup>
-		<PackageReference Include="AStar.Logging.Extensions" Version="0.3.0">
+		<PackageReference Include="AStar.Logging.Extensions" Version="0.4.0">
 			<GeneratePathProperty>true</GeneratePathProperty>
 		</PackageReference>
+		<PackageReference Include="System.Text.Json" Version="8.0.5" />
 	</ItemGroup>
 	
 	 <ItemGroup>
