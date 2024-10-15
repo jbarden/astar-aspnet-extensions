@@ -27,8 +27,8 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<TargetFramework>net8.0</TargetFramework>
 		<Title>AStar ASPNet Extensions</Title>
-		<Version>0.8.2</Version>
-		<PackageReleaseNotes>Add API Versioning to the mix. Update NuGet packages.</PackageReleaseNotes>
+		<Version>0.8.3</Version>
+		<PackageReleaseNotes>Parse App name so correct XML documentation file is used to configure Swagger.</PackageReleaseNotes>
 		<contentFiles>
 			<files include="astar-logging-settings.json" buildAction="content" flatten="true" copyToOutput="true" />
 		</contentFiles>

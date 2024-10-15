@@ -34,13 +34,16 @@ public static class ServiceCollectionExtensions
     }
 
     /// <summary>
-    /// The <see cref="ConfigureApi(IServiceCollection, OpenApiInfo)" /> will do exactly what it says on the tin... just, this time, it is API-specific.
+    /// The <see cref="ConfigureApi(IServiceCollection, OpenApiInfo, string)" /> will do exactly what it says on the tin... just, this time, it is API-specific.
     /// </summary>
     /// <param name="services">
     /// An instance of the <see cref="IServiceCollection" /> interface that will be configured with the current methods.
     /// </param>
     /// <param name="openApiInfo">
     /// The configured instance of <see cref="OpenApiInfo"/> to complete the Swagger configuration.
+    /// </param>
+    /// <param name="applicationName">
+    /// The name of the application - this is used to configure Swagger.
     /// </param>
     /// <returns>
     /// The original <see cref="IServiceCollection" /> to facilitate method chaining.
@@ -49,7 +52,7 @@ public static class ServiceCollectionExtensions
     /// </seealso>
     /// <seealso href="ConfigureApi(IServiceCollection, OpenApiInfo)">
     /// </seealso>
-    public static IServiceCollection ConfigureApi(this IServiceCollection services, OpenApiInfo openApiInfo)
+    public static IServiceCollection ConfigureApi(this IServiceCollection services, OpenApiInfo openApiInfo, string applicationName)
     {
         _ = services.AddCommon()
                     .AddControllers(options => options.ReturnHttpNotAcceptable = true);
@@ -64,7 +67,7 @@ public static class ServiceCollectionExtensions
         _ = services.AddSwaggerGen(
             options =>
             {
-                var fileName = typeof( Program ).Assembly.GetName().Name + ".xml";
+                var fileName = $"{applicationName}.xml";
                 var filePath = Path.Combine( AppContext.BaseDirectory, fileName );
 
                 options.IncludeXmlComments(filePath);

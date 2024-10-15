@@ -86,15 +86,18 @@
             <seealso href="ConfigureApi">
             </seealso>
         </member>
-        <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.OpenApi.Models.OpenApiInfo)">
+        <member name="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.OpenApi.Models.OpenApiInfo,System.String)">
             <summary>
-            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.OpenApi.Models.OpenApiInfo)" /> will do exactly what it says on the tin... just, this time, it is API-specific.
+            The <see cref="M:AStar.ASPNet.Extensions.ServiceCollectionExtensions.ServiceCollectionExtensions.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.OpenApi.Models.OpenApiInfo,System.String)" /> will do exactly what it says on the tin... just, this time, it is API-specific.
             </summary>
             <param name="services">
             An instance of the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> interface that will be configured with the current methods.
             </param>
             <param name="openApiInfo">
             The configured instance of <see cref="T:Microsoft.OpenApi.Models.OpenApiInfo"/> to complete the Swagger configuration.
+            </param>
+            <param name="applicationName">
+            The name of the application - this is used to configure Swagger.
             </param>
             <returns>
             The original <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> to facilitate method chaining.
